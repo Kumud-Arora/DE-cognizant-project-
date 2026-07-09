@@ -2,7 +2,7 @@ import { test, expect } from '@playwright/test'
 import { HomePage } from '../pages/HomePage'
 
 test.describe('Login / Auth', () => {
-  // ── Login page renders correctly ──────────────────────────────────────────
+  // Login page renders correctly
 
   test('login page shows the portal heading', async ({ page }) => {
     await page.goto('/login')
@@ -25,7 +25,7 @@ test.describe('Login / Auth', () => {
     await expect(page).toHaveURL(/\/login$/)
   })
 
-  // ── Successful login ──────────────────────────────────────────────────────
+  //  Successful login 
 
   test('valid email and password redirects to home page', async ({ page }) => {
     await page.goto('/login')
@@ -36,7 +36,7 @@ test.describe('Login / Auth', () => {
     await expect(page.getByRole('heading', { name: /good morning/i })).toBeVisible()
   })
 
-  // ── Invalid email format ──────────────────────────────────────────────────
+  // Invalid email format 
 
   test('email input without @ prevents form submission and stays on /login', async ({ page }) => {
     await page.goto('/login')
@@ -55,7 +55,7 @@ test.describe('Login / Auth', () => {
     await expect(page.locator('input[type="email"]:invalid')).toBeAttached()
   })
 
-  // ── Logout ────────────────────────────────────────────────────────────────
+  //  Logout 
 
   test('logout button is visible in the sidebar after login', async ({ page }) => {
     const home = new HomePage(page)
